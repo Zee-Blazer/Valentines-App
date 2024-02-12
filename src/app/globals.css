@@ -11,8 +11,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 139, 0, 0;
+    --background-end-rgb: 139, 0, 0;
   }
 }
 
@@ -24,6 +24,34 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+.roboto__font {
+  font-family: var(--roboto-font);
+}
+
+.inter__font {
+  font-family: var(--inter-font);
+}
+
+.dancingscript__font {
+  font-family: var(--dancingscript-font);
+}
+
+.caveat {
+  font-family: var(--caveat-type);
+}
+
+.pacifico {
+  font-family: var(--pacifico);
+}
+
+.shadowsDesign {
+  font-family: var(--shadows__into);
+}
+
+.greatvibes {
+  font-family: var(--greatvibes);
 }
 
 @layer utilities {

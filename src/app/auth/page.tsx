@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { signInAnonymously } from 'firebase/auth';
 import { ref, push } from 'firebase/database';
 
@@ -15,15 +15,20 @@ export default function Auth() {
 
     const router = useRouter();
 
+    const [username, setUsername] = useState();
+
     const signin = () => {
         signInAnonymously(auth)
         .then( (data: any) => {
 
             push(
                 ref(database, `User/${data.user.uid}`),
-                { username: "John", id: data.user.uid }
+                { username: username, id: data.user.uid }
             )
             .then( res => {
+                const user = username;
+                localStorage.setItem("Username", user);
+                localStorage.setItem("user_id", JSON.stringify(data.user.uid));
                 router.push('/');
             } )
             .catch( err => console.log(err) )
@@ -51,6 +56,8 @@ export default function Auth() {
                 <input 
                     className='mt-2 py-2 px-4 rounded-sm text-black'
                     placeholder="John Doe or Classic_Dude"
+                    value={ username }
+                    onChange={ e => setUsername(e.target.value) }
                 />
             </div>
 

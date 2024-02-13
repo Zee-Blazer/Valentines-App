@@ -1,25 +1,43 @@
 "use client";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Navigation
 import { redirect, useRouter } from 'next/navigation';
 
 // Firebase
-import { auth } from '../Firebase/clientApp';
+import { auth, database } from '../Firebase/clientApp';
 import { onAuthStateChanged } from 'firebase/auth';
+import { ref, push, onValue } from 'firebase/database';
 
 // Icons
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
+// Component
+import DisplayMsg from './display-msg';
+
 export default function Home() {
 
   const router = useRouter();
+
+  const [data, setData] = useState();
 
   useEffect( () => {
     onAuthStateChanged( auth, user => {
       if(user){
         console.log("Working fine")
+        onValue(ref(database, `Messages/${ JSON.parse(localStorage.getItem("user_id")) }`), (snapshot) => {
+          interface objMsg { id: string, font: string, msg: string, senderName: string, to: string }
+          const msg: objMsg[] = [];
+          snapshot.forEach(childSnapshot => {
+              msg.push({
+                  id: childSnapshot.key, ...childSnapshot.val()
+              })
+              // console.log({ id: childSnapshot.key, ...childSnapshot.val() })
+          })
+          // console.log(msg);
+          setData(msg);
+        })
       }
       else{
         router.push("/auth");
@@ -34,34 +52,13 @@ export default function Home() {
         className="text-center text-2xl mt-6 pacifico"
       >Messages</p>
       
-      <div className="mt-6">
-
-        <FavoriteIcon 
-          style={{ alignSelf: "center", margin: "2px 45%", fontSize: "40px", marginBottom: "-21px" }}
-        />
-
-        <div className="bg-gray-500 bg-opacity-50 mx-6 mb-6 py-4 px-6 rounded-md lg:mx-12">
-          <p className="text-base dancingscript__font">
-            To: { "Olamide Daniella" }
-          </p>
-
-          <p className="greatvibes">
-            Relationship: { "Sibling" }
-          </p>
-
-          <p>
-            Message: 
-            <span className="text-sm shadowsDesign">
-              { "This is to remind you of the awesome relation ship we've had all thr...." }
-            </span>
-          </p>
-
-          <p className="text-right text-blue-400 caveat cursor-pointer">Link</p>
-
-          <p className="greatvibes">Somehting</p>
+      { data && data.map( (item) => (
+        <div key={ item.id }>
+          <DisplayMsg 
+            font={ item.font } id={ item.id } msg={ item.msg } senderName={ item.senderName } to={ item.to }
+          />
         </div>
-
-      </div>
+      ) ) }
 
       <div className="absolute -bottom-0 -right-0 mr-12 mb-20 cursor-pointer"
         onClick={ () => router.push('/create') }

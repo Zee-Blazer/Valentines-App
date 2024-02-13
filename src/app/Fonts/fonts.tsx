@@ -4,7 +4,8 @@ import {
 
 export const inter = Inter({ 
     subsets: ["latin"],
-    variable: "--inter-font"
+    variable: "--inter-font",
+    preload: true,
 });
 
 export const roboto = Roboto({
@@ -12,7 +13,8 @@ export const roboto = Roboto({
     style: ['normal', 'italic'],
     subsets: ['latin'],
     display: 'swap',
-    variable: "--roboto-font"
+    variable: "--roboto-font",
+    preload: true,
 })
 
 export const dancingscript = Dancing_Script({
@@ -20,33 +22,38 @@ export const dancingscript = Dancing_Script({
     style: ['normal'],
     subsets: ['latin'],
     display: 'swap',
-    variable: "--dancingscript-font"
+    variable: "--dancingscript-font",
+    preload: true,
 })
 
 export const pacifico = Pacifico({
     weight: ['400'],
     style: ['normal'],
     subsets: ["latin"],
-    variable: "--pacifico"
+    variable: "--pacifico",
+    preload: true,
 })
 
 export const caveat = Caveat({
     weight: ['400'],
     style: ['normal'],
     subsets: ["latin"],
-    variable: "--caveat-type"
+    variable: "--caveat-type",
+    preload: true,
 })
 
 export const shadows = Shadows_Into_Light({
     weight: ['400'],
     style: ['normal'],
     subsets: ["latin"],
-    variable: "--shadows__into"
+    variable: "--shadows__into",
+    preload: true,
 })
 
 export const greatvibes = Great_Vibes({
     weight: ['400'],
     style: ['normal'],
     subsets: ["latin"],
+    preload: true,
     variable: "--greatvibes"
 })

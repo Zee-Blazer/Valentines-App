@@ -1,11 +1,32 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
+import { useEffect } from 'react';
+
+// Navigation
+import { redirect, useRouter } from 'next/navigation';
+
+// Firebase
+import { auth } from '../Firebase/clientApp';
+import { onAuthStateChanged } from 'firebase/auth';
 
 // Icons
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 export default function Home() {
+
+  const router = useRouter();
+
+  useEffect( () => {
+    onAuthStateChanged( auth, user => {
+      if(user){
+        console.log("Working fine")
+      }
+      else{
+        router.push("/auth");
+      }
+    } )
+  }, [] )
+
   return (
     <div>
 
@@ -42,7 +63,9 @@ export default function Home() {
 
       </div>
 
-      <div className="absolute -bottom-0 -right-0 mr-12 mb-20 cursor-pointer">
+      <div className="absolute -bottom-0 -right-0 mr-12 mb-20 cursor-pointer"
+        onClick={ () => router.push('/create') }
+      >
         <AddCircleIcon 
           style={{ fontSize: "54px" }}
         />

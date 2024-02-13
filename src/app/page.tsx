@@ -20,13 +20,13 @@ export default function Home() {
 
   const router = useRouter();
 
-  const [data, setData] = useState();
+  const [data, setData] = useState<any []>([]);
 
   useEffect( () => {
     onAuthStateChanged( auth, user => {
       if(user){
         console.log("Working fine")
-        onValue(ref(database, `Messages/${ JSON.parse(localStorage.getItem("user_id")) }`), (snapshot) => {
+        onValue(ref(database, `Messages/${ JSON.parse(localStorage.getItem("user_id") as string) }`), (snapshot) => {
           interface objMsg { id: string, font: string, msg: string, senderName: string, to: string }
           const msg: objMsg[] = [];
           snapshot.forEach(childSnapshot => {

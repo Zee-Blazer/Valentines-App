@@ -22,8 +22,8 @@ export default function FormCont () {
     const [currentMsg, setCurrentMsg] = useState(0);
     const [font, setFont] = useState("caveat");
 
-    const [name, setName] = useState();
-    const [message, setMessage] = useState();
+    const [name, setName] = useState<string>();
+    const [message, setMessage] = useState<string>();
 
     const generateMessage = () => {
         setMessage(data.messages[currentMsg].msg);
@@ -32,7 +32,7 @@ export default function FormCont () {
 
     const sendMessage = () => {
         push(
-            ref( database, `Messages/${ JSON.parse(localStorage.getItem("user_id")) }` ),
+            ref( database, `Messages/${ JSON.parse(localStorage.getItem("user_id") as string) }` ),
             { senderName: localStorage.getItem("Username"), to: name, msg: message, font: font }
         )
         .then( res => {

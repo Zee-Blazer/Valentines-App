@@ -12,8 +12,13 @@ import { ref, push, onValue, get, child } from 'firebase/database';
 
 export default function Product() {
 
+    interface dataStr {
+        font: string, msg: string,
+        senderName: string, to: string
+    }
+
     // const router = useRouter();
-    const [data, setData] = useState();
+    const [data, setData] = useState<dataStr [] | any>([]);
 
     // const { id, product } = router.query;
     const params = useParams();

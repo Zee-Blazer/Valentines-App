@@ -15,7 +15,7 @@ export default function Auth() {
 
     const router = useRouter();
 
-    const [username, setUsername] = useState();
+    const [username, setUsername] = useState<string>();
 
     const signin = () => {
         signInAnonymously(auth)

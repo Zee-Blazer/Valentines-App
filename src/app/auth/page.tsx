@@ -26,7 +26,7 @@ export default function Auth() {
                 { username: username, id: data.user.uid }
             )
             .then( res => {
-                const user = username;
+                const user: any = username;
                 localStorage.setItem("Username", user);
                 localStorage.setItem("user_id", JSON.stringify(data.user.uid));
                 router.push('/');

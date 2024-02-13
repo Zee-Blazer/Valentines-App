@@ -60,7 +60,7 @@ export default function Home() {
         </div>
       ) ) }
 
-      <div className="absolute -bottom-0 -right-0 mr-12 mb-20 cursor-pointer"
+      <div className="absolute -bottom-0 -right-0 mr-12 mb-10 cursor-pointer"
         onClick={ () => router.push('/create') }
       >
         <AddCircleIcon 

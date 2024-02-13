@@ -2,8 +2,8 @@
 export default function Message() {
 
     return (
-        <>
-            Something new
-        </>
+        <div>
+            Something simple
+        </div>
     )
 }

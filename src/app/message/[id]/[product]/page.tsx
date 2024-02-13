@@ -19,17 +19,21 @@ export default function Product() {
     const params = useParams();
 
     useEffect( () => {
-        get(child( ref(database), `Messages/${ params.id }/${ params.product }` ))
-        .then( snapshot => {
-            if(snapshot.exists()){
-                // console.log("exists");
-                setData(snapshot.val());
-            }
-            else{
-                console.log("Does not Exist");
-            }
-        } )
-        .catch( err => console.log(err) );
+        const func = () => {
+            get(child( ref(database), `Messages/${ params.id }/${ params.product }` ))
+            .then( snapshot => {
+                if(snapshot.exists()){
+                    // console.log("exists");
+                    setData(snapshot.val());
+                }
+                else{
+                    console.log("Does not Exist");
+                }
+            } )
+            .catch( err => console.log(err) );
+        }
+
+        func();
     }, [] )
 
     return (

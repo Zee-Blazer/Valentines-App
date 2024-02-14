@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 // Navigation
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 // Firebase
 import { auth, database } from '../Firebase/clientApp';
@@ -50,15 +50,22 @@ export default function Home() {
 
       <p
         className="text-center text-2xl mt-6 pacifico"
-      >Messages</p>
+      >Heart To Heart Messages</p>
       
-      { data && data.map( (item) => (
+      { data ? data.map( (item) => (
         <div key={ item.id }>
           <DisplayMsg 
             font={ item.font } id={ item.id } msg={ item.msg } senderName={ item.senderName } to={ item.to }
           />
         </div>
-      ) ) }
+      ) ) :
+        <div className='my-12 mx-14 py-7 px-12 rounded-lg text-2xl leading-snug text-center' 
+          style={{ backgroundColor: "rgba(245, 39, 145, 0.59)" }}
+        >
+          Create a message and share with loved ones
+          <p className='mt-4 text-xl roboto__font'>Click the Add Icon</p>
+        </div>
+      }
 
       <div className="absolute -bottom-0 -right-0 mr-12 mb-10 cursor-pointer"
         onClick={ () => router.push('/create') }

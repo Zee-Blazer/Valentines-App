@@ -59,9 +59,9 @@ export default function FormCont () {
                 <div className="flex justify-between">
                     <label className="shadowsDesign mb-6">Message:</label>
                     <div className="flex justify-between">
-                        <p className="bg-green-400 mb-6 px-4 py-1 rounded-sm cursor-pointer mr-2"
+                        <p className="bg-green-400 mb-6 px-4 py-1 rounded-sm cursor-pointer mr-2 text-xs"
                             onClick={ generateMessage }
-                        >Generate</p>
+                        >Auto Generate Message</p>
                         
                         <select
                             className="bg-green-700 mb-6"
@@ -88,7 +88,7 @@ export default function FormCont () {
             </div>
 
             <button
-                className="bg-red-700 text-white py-2 px-4 rounded-md self-center mx-10 w-4/5"
+                className="bg-red-400 shadow-xl text-white py-2 px-4 rounded-md self-center mx-10 w-4/5"
                 onClick={ sendMessage }
             >Done</button>
         </>

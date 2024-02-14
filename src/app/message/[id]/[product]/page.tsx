@@ -12,6 +12,8 @@ import { ref, push, onValue, get, child } from 'firebase/database';
 
 export default function Product() {
 
+    const router = useRouter();
+
     interface dataStr {
         font: string, msg: string,
         senderName: string, to: string
@@ -68,8 +70,12 @@ export default function Product() {
                 </div>
 
             </div>
-
-            <p className="text-center py-3 roboto" style={{ color: "lightblue" }}>Send Message</p>
+ 
+            <p className="text-center text-xs py-3 roboto" style={{ color: "lightblue" }}
+                onClick={ () => router.push('/auth') }
+            >
+                Compose your own message
+            </p>
 
         </>
     )

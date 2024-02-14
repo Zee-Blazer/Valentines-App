@@ -7,10 +7,9 @@ import { useRouter } from 'next/navigation';
 // Firebase
 import { auth, database } from '../Firebase/clientApp';
 import { onAuthStateChanged } from 'firebase/auth';
-import { ref, push, onValue } from 'firebase/database';
+import { ref, onValue } from 'firebase/database';
 
 // Icons
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 // Component

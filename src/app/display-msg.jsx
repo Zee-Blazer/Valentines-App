@@ -6,7 +6,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 
 // Firebase
 import { database } from '../Firebase/clientApp';
-import { ref, push, onValue, remove } from 'firebase/database';
+import { ref, remove } from 'firebase/database';
 
 // Navigation
 import { useRouter } from 'next/navigation';

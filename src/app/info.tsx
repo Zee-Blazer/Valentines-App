@@ -17,9 +17,6 @@ export default function Info() {
 
     const theme = useTheme();
 
-    const handleClickOpen = () => {
-        setOpen(true);
-      };
     
       const handleClose = () => {
         setOpen(false);

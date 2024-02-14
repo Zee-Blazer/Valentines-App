@@ -14,6 +14,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 // Component
 import DisplayMsg from './display-msg';
+import Info from './info';
 
 export default function Home() {
 
@@ -46,6 +47,8 @@ export default function Home() {
 
   return (
     <div>
+
+      <Info />
 
       <p
         className="text-center text-2xl mt-6 pacifico"

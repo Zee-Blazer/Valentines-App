@@ -45,9 +45,7 @@ export default function Info() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          {/* <Button autoFocus onClick={handleClose}>
-            Disagree
-          </Button> */}
+          
           <Button onClick={handleClose} autoFocus>
             Close
           </Button>

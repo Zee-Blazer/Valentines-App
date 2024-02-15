@@ -6,8 +6,7 @@ import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
 // Firebase
-import { auth, database } from '../../Firebase/clientApp';
-import { onAuthStateChanged } from 'firebase/auth';
+import { database } from '../../Firebase/clientApp';
 import { ref, push } from 'firebase/database';
 
 // JSON file

@@ -33,9 +33,7 @@ export default function Home() {
               msg.push({
                   id: childSnapshot.key, ...childSnapshot.val()
               })
-              // console.log({ id: childSnapshot.key, ...childSnapshot.val() })
           })
-          // console.log(msg);
           setData(msg);
         })
       }

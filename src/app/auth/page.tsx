@@ -1,5 +1,5 @@
 "use client";
-import React, { use, useState } from 'react';
+import React, { useState } from 'react';
 import { signInAnonymously } from 'firebase/auth';
 import { ref, push } from 'firebase/database';
 
@@ -31,13 +31,9 @@ export default function Auth() {
                 localStorage.setItem("user_id", JSON.stringify(data.user.uid));
                 router.push('/');
             } )
-            .catch( err => console.log(err) )
-
-            // console.log(data.user.uid)
+            .catch( err => {} )
         } )
-        .catch( err => console.log(err) );
-
-        console.log("working")
+        .catch( err => {} );
     }
 
     return (

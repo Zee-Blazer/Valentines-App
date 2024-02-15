@@ -35,10 +35,9 @@ export default function FormCont () {
             { senderName: localStorage.getItem("Username"), to: name, msg: message, font: font }
         )
         .then( res => {
-            console.log("done");
             router.push('/');
         } )
-        .catch( err => console.log("An error occured") );
+        .catch( err => {} );
     }
 
     return (
